@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
+
 public class PriceQuality {
-    @Id()
+
     String nom;
     String rapportQualitePrix;
 }

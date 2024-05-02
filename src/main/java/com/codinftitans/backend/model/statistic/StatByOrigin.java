@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
+
 public class StatByOrigin {
-    @Id()
+
     private String origine;
     private double sum;
 }

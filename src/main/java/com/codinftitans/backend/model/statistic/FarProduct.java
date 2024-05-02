@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
+
 public class FarProduct {
-    @Id()
+
     String nom;
     int count;
 }

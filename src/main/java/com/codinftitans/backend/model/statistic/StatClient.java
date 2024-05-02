@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
+
 public class StatClient {
-    @Id()
+
     String clientName;
     String clientEmail;
     String totalPrix;

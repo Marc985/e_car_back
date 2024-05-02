@@ -13,6 +13,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "\"order\"")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,15 +21,15 @@ public class Order {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "id_customer",nullable = false)
+    @JoinColumn(name = "id_customer")
     private Customer customer;
-    @ManyToMany(mappedBy = "orders")
+    @ManyToMany
     @JoinTable(
             name = "product_order",
             joinColumns = @JoinColumn(name = "id_order"),
             inverseJoinColumns = @JoinColumn(name = "id_product")
     )
-    private Set<Product> ordered_products;
+    private Set<Product> orderedProducts;
 
 
     private LocalDate orderDate;

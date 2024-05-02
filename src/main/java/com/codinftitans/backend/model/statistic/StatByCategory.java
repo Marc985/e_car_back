@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
+
 public class StatByCategory {
-    @Id()
+
     private String categorie;
     private double sum;
 }
