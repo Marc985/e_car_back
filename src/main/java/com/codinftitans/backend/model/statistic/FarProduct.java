@@ -1,18 +1,17 @@
-package com.codinftitans.backend.model;
+package com.codinftitans.backend.model.statistic;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-public class StatByOrigin {
+public class FarProduct {
     @Id()
-    private String origine;
-    private double sum;
+    String nom;
+    int count;
 }

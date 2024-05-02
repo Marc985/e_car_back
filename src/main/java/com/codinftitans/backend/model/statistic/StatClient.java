@@ -1,4 +1,4 @@
-package com.codinftitans.backend.model;
+package com.codinftitans.backend.model.statistic;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

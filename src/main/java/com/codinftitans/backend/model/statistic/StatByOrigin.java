@@ -1,4 +1,4 @@
-package com.codinftitans.backend.model;
+package com.codinftitans.backend.model.statistic;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class PriceQuality {
+public class StatByOrigin {
     @Id()
-    String nom;
-    String rapportQualitePrix;
+    private String origine;
+    private double sum;
 }
