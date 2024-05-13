@@ -10,7 +10,9 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,6 +22,7 @@ public class ProductDTO {
     private String name;
     private String description;
     private double price;
+    private List<MultipartFile> images;
     private  int idCategory;
 
 }

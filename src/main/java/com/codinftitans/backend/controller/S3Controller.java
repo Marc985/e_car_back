@@ -19,10 +19,6 @@ public class S3Controller {
         this.s3Service = s3Service;
     }
 
-    @GetMapping
-    public String health() {
-        return "UP";
-    }
 
     @PostMapping(path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
