@@ -20,10 +20,9 @@ import java.util.Set;
 @Data
 public class ProductDTO {
     private int idProduct;
-    private String name;
     private String description;
+    private String name;
     private double price;
-    private List<String> pics;
     private  int idCategory;
 
 }

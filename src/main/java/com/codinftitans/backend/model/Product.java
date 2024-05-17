@@ -24,8 +24,10 @@ public class Product {
 
     private Set<Order> orders;
     @ManyToOne
-    @JoinColumn(name = "id_category")
+    @JoinColumn(name = "id_category", insertable = false,updatable = false)
     private Category category;
+    @Column(name = "id_category")
+    private int idCategory;
     @OneToMany(mappedBy = "product")
     private Set<ProductPic> pics;
 }

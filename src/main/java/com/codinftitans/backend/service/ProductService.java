@@ -10,19 +10,27 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService {
     @Autowired
    private ProductRepository productRepository;
 
-  private   ModelMapper mapper=new ModelMapper();
+    @Autowired
+    private ModelMapper mapper;
 
     public ProductDTO saveNewProduct(ProductDTO product){
-        mapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
+
         Product newProduct=this.mapper.map(product,Product.class);
         productRepository.save(newProduct);
         return  product;
     }
+    public List<ProductDTO> findAllProduct(){
+        List<ProductDTO> products=productRepository.findAll().stream()
+                .map(product -> this.mapper.map(product,ProductDTO.class)).toList();
+        return products;
+    }
+
 
 }
