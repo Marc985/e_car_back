@@ -18,9 +18,9 @@ public String uploadImages(@RequestBody MultipartFile image) throws IOException 
     imageService.saveImageToStorage(image);
 
 }*/
-        imageService.saveImageToStorage(image);
+return  imageService.saveImageToStorage(image);
 
-return  "uploaded successfully";
+
 }
 @GetMapping("/view/image")
 public byte [] getImages(@RequestParam(name = "name") String imageName) throws IOException {

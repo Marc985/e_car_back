@@ -3,6 +3,7 @@ package com.codinftitans.backend.dto;
 import com.codinftitans.backend.model.Category;
 import com.codinftitans.backend.model.Order;
 import com.codinftitans.backend.model.ProductPic;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
@@ -22,7 +23,7 @@ public class ProductDTO {
     private String name;
     private String description;
     private double price;
-    private List<MultipartFile> images;
+    private List<String> pics;
     private  int idCategory;
 
 }
