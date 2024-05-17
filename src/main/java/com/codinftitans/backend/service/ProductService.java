@@ -35,5 +35,11 @@ public class ProductService {
         productRepository.deleteById(id);
         return "deleted successfullly";
     }
+    public List<ProductDTO> filterByName(String nameChar){
+        List<ProductDTO> products=findAllProduct().stream().filter(product ->
+                product.getName().toLowerCase().contains(nameChar)
+                ).toList();
+        return products;
+    }
 
 }

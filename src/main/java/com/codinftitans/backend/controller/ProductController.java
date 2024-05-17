@@ -22,6 +22,10 @@ public class ProductController {
     public List<ProductDTO> findAll(){
         return productService.findAllProduct();
     }
+    @GetMapping("/products/search")
+    public List<ProductDTO> searchByName(@RequestParam(name = "name") String name){
+        return productService.filterByName(name);
+    }
     @DeleteMapping("/product/delete")
     public String deleteProduct(@RequestParam (name = "id") int id){
         return productService.deleteById(id);
