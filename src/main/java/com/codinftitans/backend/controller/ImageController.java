@@ -13,12 +13,12 @@ public class ImageController {
     @Autowired
 ImageService imageService;
     @PostMapping("/upload/image")
-public String uploadImages(@RequestBody MultipartFile image) throws IOException {
+public String uploadImages(@RequestBody MultipartFile image,@RequestParam int idProduct) throws IOException {
 /*for(MultipartFile image:images){
     imageService.saveImageToStorage(image);
 
 }*/
-return  imageService.saveImageToStorage(image);
+return  imageService.saveImageToStorage(image,idProduct);
 
 
 }

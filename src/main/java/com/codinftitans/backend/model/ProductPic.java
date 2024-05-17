@@ -18,6 +18,7 @@ public class ProductPic implements Serializable {
     private int idPic;
     private String url;
     @ManyToOne
-    @JoinColumn(name = "id_product")
+    @JoinColumn(name = "id_product",updatable = false,insertable = false)
     private Product product;
+    private int idProduct;
 }

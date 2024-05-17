@@ -1,5 +1,9 @@
 package com.codinftitans.backend.service;
 
+import com.codinftitans.backend.model.ProductPic;
+import com.codinftitans.backend.repository.ProductPicRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +17,10 @@ import java.util.UUID;
 
 @Service
 public class ImageService {
-    public String saveImageToStorage( MultipartFile imageFile) throws IOException {
+    @Autowired
+    ProductPicRepository productPicRepository;
+    @Transactional
+    public String saveImageToStorage( MultipartFile imageFile,int idProduct) throws IOException {
         String uploadDirectory="src/main/resources/static/images";
         String uniqueFileName= UUID.randomUUID()+"_"+imageFile.getOriginalFilename();
         Path uploadPath=Path.of(uploadDirectory);
@@ -22,7 +29,14 @@ public class ImageService {
             Files.createDirectories(uploadPath);
         }
         Files.copy(imageFile.getInputStream(),filePath, StandardCopyOption.REPLACE_EXISTING);
+        saveImageToDb(uniqueFileName,idProduct);
         return  uniqueFileName;
+    }
+    private void saveImageToDb(String name,int idProduct){
+        ProductPic pic=new ProductPic();
+        pic.setUrl(name);
+        pic.setIdProduct(idProduct);
+        productPicRepository.save(pic);
     }
 
     public byte [] getImage(String imageName) throws IOException {
