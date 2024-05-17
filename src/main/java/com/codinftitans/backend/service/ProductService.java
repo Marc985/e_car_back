@@ -31,6 +31,9 @@ public class ProductService {
                 .map(product -> this.mapper.map(product,ProductDTO.class)).toList();
         return products;
     }
-
+    public String deleteById(int id){
+        productRepository.deleteById(id);
+        return "deleted successfullly";
+    }
 
 }

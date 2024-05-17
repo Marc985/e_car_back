@@ -4,10 +4,7 @@ import com.codinftitans.backend.dto.ProductDTO;
 import com.codinftitans.backend.model.Product;
 import com.codinftitans.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,9 @@ public class ProductController {
     @GetMapping("/products")
     public List<ProductDTO> findAll(){
         return productService.findAllProduct();
+    }
+    @DeleteMapping("/product/delete")
+    public String deleteProduct(@RequestParam (name = "id") int id){
+        return productService.deleteById(id);
     }
 }
