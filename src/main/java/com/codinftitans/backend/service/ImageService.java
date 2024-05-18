@@ -1,10 +1,9 @@
 package com.codinftitans.backend.service;
 
-import com.codinftitans.backend.model.ProductPic;
-import com.codinftitans.backend.repository.ProductPicRepository;
+import com.codinftitans.backend.model.CarPic;
+import com.codinftitans.backend.repository.CarPicRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,17 +11,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.Base64;
 import java.util.UUID;
 
 @Service
 public class ImageService {
     @Autowired
-    ProductPicRepository productPicRepository;
+    CarPicRepository productPicRepository;
     @Transactional
     public String saveImageToStorage( MultipartFile imageFile,int idProduct) throws IOException {
         String uploadDirectory="src/main/resources/static/images";
-        String uniqueFileName= UUID.randomUUID()+"_"+imageFile.getOriginalFilename();
+        String uniqueFileName= UUID.randomUUID().toString();
         Path uploadPath=Path.of(uploadDirectory);
         Path filePath=uploadPath.resolve(uniqueFileName);
         if (!Files.exists(uploadPath)) {
@@ -33,9 +31,9 @@ public class ImageService {
         return  uniqueFileName;
     }
     private void saveImageToDb(String name,int idProduct){
-        ProductPic pic=new ProductPic();
+        CarPic pic=new CarPic();
         pic.setUrl(name);
-        pic.setIdProduct(idProduct);
+        pic.setIdCar(idProduct);
         productPicRepository.save(pic);
     }
 

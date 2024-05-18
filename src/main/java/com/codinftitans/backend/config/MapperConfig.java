@@ -1,7 +1,6 @@
 package com.codinftitans.backend.config;
 
 import com.codinftitans.backend.dto.ProductDTO;
-import com.codinftitans.backend.model.Product;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.context.annotation.Bean;
