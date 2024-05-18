@@ -17,17 +17,17 @@ import java.util.UUID;
 public class Car implements Serializable {
     @Id
             @GeneratedValue(strategy = GenerationType.UUID)
-    UUID idCar;
-    String description;
-    String brand;
-    String model;
-    double price;
-    String color;
-    String motorType;
-    int power;
-    int placeNumber;
-    String status;
+    private UUID idCar;
+    private String description;
+    private String brand;
+    private String model;
+    private double price;
+    private String color;
+    private String motorType;
+    private int power;
+    private int placeNumber;
+    private String status;
     @OneToMany(mappedBy = "car")
-    Set<CarPic> pics;
+    private Set<CarPic> pics;
 
 }
