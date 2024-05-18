@@ -19,12 +19,12 @@ public class ProductController {
 
     }
     @GetMapping("/products")
-    public List<ProductDTO> findAll(){
+    public List<Product> findAll(){
         return productService.findAllProduct();
     }
     @GetMapping("/products/search")
     public List<ProductDTO> searchByName(@RequestParam(name = "name") String name){
-        return productService.filterByName(name);
+        return null;// productService.filterByName(name);
     }
     @DeleteMapping("/product/delete")
     public String deleteProduct(@RequestParam (name = "id") int id){

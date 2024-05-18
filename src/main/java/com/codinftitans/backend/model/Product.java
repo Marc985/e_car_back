@@ -18,10 +18,7 @@ public class Product {
     private String name;
     private String description;
     private double price;
-
-
     @ManyToMany(mappedBy = "orderedProducts")
-
     private Set<Order> orders;
     @ManyToOne
     @JoinColumn(name = "id_category", insertable = false,updatable = false)

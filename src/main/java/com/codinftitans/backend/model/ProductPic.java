@@ -20,5 +20,6 @@ public class ProductPic implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_product",updatable = false,insertable = false)
     private Product product;
+    @Column(name = "id_product")
     private int idProduct;
 }

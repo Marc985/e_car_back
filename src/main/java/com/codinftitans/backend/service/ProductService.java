@@ -26,20 +26,20 @@ public class ProductService {
         productRepository.save(newProduct);
         return  product;
     }
-    public List<ProductDTO> findAllProduct(){
-        List<ProductDTO> products=productRepository.findAll().stream()
-                .map(product -> this.mapper.map(product,ProductDTO.class)).toList();
-        return products;
+    public List<Product> findAllProduct(){
+        //List<ProductDTO> products=productRepository.findAll().stream()
+          //      .map(product -> this.mapper.map(product,ProductDTO.class)).toList();
+        return productRepository.findAll();
     }
     public String deleteById(int id){
         productRepository.deleteById(id);
         return "deleted successfullly";
     }
-    public List<ProductDTO> filterByName(String nameChar){
+   /* public List<ProductDTO> filterByName(String nameChar){
         List<ProductDTO> products=findAllProduct().stream().filter(product ->
                 product.getName().toLowerCase().contains(nameChar)
                 ).toList();
         return products;
-    }
+    }*/
 
 }
