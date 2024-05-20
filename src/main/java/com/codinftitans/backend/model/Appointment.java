@@ -16,19 +16,19 @@ import java.util.UUID;
 public class Appointment {
     @Id
             @GeneratedValue(strategy = GenerationType.UUID)
-    UUID idAppointment;
+   private UUID idAppointment;
 
-    String name;
-    String firstName;
-    String email;
-    String message;
-    String contact;
-    Instant appointmentDate;
-    String Status;
+   private String name;
+   private String firstName;
+   private String email;
+   private String message;
+   private String contact;
+   private Instant appointmentDate;
+   private String Status;
     @ManyToOne
     @JoinColumn(name = "id_car",insertable = false,updatable = false)
-    Car car;
+   private Car car;
     @Column(name = "id_car")
-    UUID idCar;
+    private UUID idCar;
 
 }

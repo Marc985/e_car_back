@@ -29,5 +29,7 @@ public class Car implements Serializable {
     private String status;
     @OneToMany(mappedBy = "car")
     private Set<CarPic> pics;
+    @OneToMany(mappedBy = "car")
+    private Set<Appointment> appointments;
 
 }
