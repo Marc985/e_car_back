@@ -7,13 +7,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class ImageController {
     @Autowired
 ImageService imageService;
     @PostMapping("/upload/image")
-public String uploadImages(@RequestBody MultipartFile image,@RequestParam int idProduct) throws IOException {
+public String uploadImages(@RequestBody MultipartFile image,@RequestParam UUID idProduct) throws IOException {
 /*for(MultipartFile image:images){
     imageService.saveImageToStorage(image);
 

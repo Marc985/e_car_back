@@ -18,7 +18,7 @@ public class ImageService {
     @Autowired
     CarPicRepository productPicRepository;
     @Transactional
-    public String saveImageToStorage( MultipartFile imageFile,int idProduct) throws IOException {
+    public String saveImageToStorage( MultipartFile imageFile,UUID idProduct) throws IOException {
         String uploadDirectory="src/main/resources/static/images";
         String uniqueFileName= UUID.randomUUID().toString();
         Path uploadPath=Path.of(uploadDirectory);
@@ -30,7 +30,7 @@ public class ImageService {
         saveImageToDb(uniqueFileName,idProduct);
         return  uniqueFileName;
     }
-    private void saveImageToDb(String name,int idProduct){
+    private void saveImageToDb(String name,UUID idProduct){
         CarPic pic=new CarPic();
         pic.setUrl(name);
         pic.setIdCar(idProduct);
