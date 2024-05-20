@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.UUID;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,5 +22,5 @@ public class CarPic implements Serializable {
     @JoinColumn(name = "id_car",updatable = false,insertable = false)
     private Car car;
     @Column(name = "id_car")
-    private int idCar;
+    private UUID idCar;
 }
