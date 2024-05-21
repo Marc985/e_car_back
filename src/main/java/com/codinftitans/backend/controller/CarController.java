@@ -1,6 +1,6 @@
 package com.codinftitans.backend.controller;
 
-import com.codinftitans.backend.dto.CarDTO;
+import com.codinftitans.backend.dto.request.CarRequestDTO;
 import com.codinftitans.backend.model.Car;
 import com.codinftitans.backend.repository.CarRepository;
 import com.codinftitans.backend.service.CarService;
@@ -23,7 +23,7 @@ public class CarController {
 
     }
     @PostMapping("car/new")
-    public CarDTO newCar(@RequestBody CarDTO carDTO){
+    public CarRequestDTO newCar(@RequestBody CarRequestDTO carDTO){
         return carService.saveNewCar(carDTO);
     }
     @DeleteMapping("car/delete")

@@ -1,6 +1,7 @@
 package com.codinftitans.backend.service;
 
-import com.codinftitans.backend.dto.CarDTO;
+import com.codinftitans.backend.dto.request.CarRequestDTO;
+import com.codinftitans.backend.dto.response.CarResponseDTO;
 import com.codinftitans.backend.model.Car;
 import com.codinftitans.backend.repository.CarPicRepository;
 import com.codinftitans.backend.repository.CarRepository;
@@ -21,15 +22,15 @@ public class CarService {
     @Autowired
     private ModelMapper mapper;
 
-    public CarDTO saveNewCar(CarDTO car){
+    public CarRequestDTO saveNewCar(CarRequestDTO car){
 
         Car newCar=this.mapper.map(car,Car.class);
         carRepository.save(newCar);
         return  car;
     }
-    public List<CarDTO> findAllCar(){
-        List<CarDTO> cars=carRepository.findAll().stream()
-                .map(car -> this.mapper.map(car,CarDTO.class)).toList();
+    public List<CarResponseDTO> findAllCar(){
+        List<CarResponseDTO> cars=carRepository.findAll().stream()
+                .map(car -> this.mapper.map(car,CarResponseDTO.class)).toList();
         return cars;
     }
     public String deleteById(UUID idCar){

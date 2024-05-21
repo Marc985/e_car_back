@@ -1,9 +1,6 @@
 package com.codinftitans.backend.config;
 
-import com.codinftitans.backend.dto.CarDTO;
-import com.codinftitans.backend.model.Car;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

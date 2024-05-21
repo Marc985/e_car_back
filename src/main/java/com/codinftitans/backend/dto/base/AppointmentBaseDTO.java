@@ -1,4 +1,4 @@
-package com.codinftitans.backend.dto;
+package com.codinftitans.backend.dto.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +9,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class AppointmentDTO {
-    private UUID idAppointment;
+public class AppointmentBaseDTO {
     private String name;
     private String firstName;
     private String email;

@@ -1,6 +1,7 @@
 package com.codinftitans.backend.controller;
 
-import com.codinftitans.backend.dto.AppointmentDTO;
+import com.codinftitans.backend.dto.request.AppointmentRequestDTO;
+import com.codinftitans.backend.dto.response.AppointmentResponseDTO;
 import com.codinftitans.backend.model.Appointment;
 import com.codinftitans.backend.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,11 @@ public class AppointmentController {
     AppointmentService appointmentService;
 
     @GetMapping("/appointments")
-    public List<AppointmentDTO> findAll(){
+    public List<AppointmentResponseDTO> findAll(){
         return appointmentService.findAll();
     }
     @PostMapping("/appointment/new")
-    public Appointment newAppointment(AppointmentDTO appointment){
+    public Appointment newAppointment(AppointmentRequestDTO appointment){
         return appointmentService.newAppointment(appointment);
     }
 }
