@@ -19,8 +19,9 @@ public class CarPic implements Serializable {
     private int idPic;
     private String url;
     @ManyToOne
-    @JoinColumn(name = "id_car",updatable = false,insertable = false)
+    @JoinColumn(name = "id_car", referencedColumnName = "idCar",insertable = false,updatable = false)
     private Car car;
+
     @Column(name = "id_car")
     private UUID idCar;
 }

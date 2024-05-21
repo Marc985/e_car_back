@@ -13,8 +13,8 @@ import java.util.UUID;
 public class ImageController {
     @Autowired
 ImageService imageService;
-    @PostMapping("/upload/image")
-public String uploadImages(@RequestBody MultipartFile image,@RequestParam UUID idProduct) throws IOException {
+    @PostMapping("/upload/image/{idProduct}")
+public String uploadImages(@RequestPart MultipartFile image,@PathVariable UUID idProduct) throws IOException {
 /*for(MultipartFile image:images){
     imageService.saveImageToStorage(image);
 

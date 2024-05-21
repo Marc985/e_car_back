@@ -21,8 +21,9 @@ public class ImageService {
     public String saveImageToStorage( MultipartFile imageFile,UUID idProduct) throws IOException {
         String uploadDirectory="src/main/resources/static/images";
         String uniqueFileName= UUID.randomUUID().toString();
+        String suffix=".png";
         Path uploadPath=Path.of(uploadDirectory);
-        Path filePath=uploadPath.resolve(uniqueFileName);
+        Path filePath=uploadPath.resolve(uniqueFileName+suffix);
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }

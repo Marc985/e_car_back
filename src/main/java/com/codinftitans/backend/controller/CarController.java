@@ -1,6 +1,8 @@
 package com.codinftitans.backend.controller;
 
 import com.codinftitans.backend.dto.CarDTO;
+import com.codinftitans.backend.model.Car;
+import com.codinftitans.backend.repository.CarRepository;
 import com.codinftitans.backend.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,11 @@ import java.util.UUID;
 public class CarController {
     @Autowired
     private CarService carService;
+    @Autowired
+    private CarRepository carRepository;
     @GetMapping("/cars")
-    public List<CarDTO> findAll(){
-        return carService.findAllCar();
+    public List<Car> findAll(){
+        return carRepository.findAll();
 
     }
     @PostMapping("car/new")

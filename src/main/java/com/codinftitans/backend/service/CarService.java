@@ -2,6 +2,7 @@ package com.codinftitans.backend.service;
 
 import com.codinftitans.backend.dto.CarDTO;
 import com.codinftitans.backend.model.Car;
+import com.codinftitans.backend.repository.CarPicRepository;
 import com.codinftitans.backend.repository.CarRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import java.util.UUID;
 public class CarService {
     @Autowired
    private CarRepository carRepository;
+
+    private CarPicRepository carPicRepository;
 
     @Autowired
     private ModelMapper mapper;

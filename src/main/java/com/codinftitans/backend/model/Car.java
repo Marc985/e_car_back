@@ -27,9 +27,9 @@ public class Car implements Serializable {
     private int power;
     private int placeNumber;
     private String status;
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car",fetch = FetchType.EAGER)
     private Set<CarPic> pics;
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car",fetch = FetchType.EAGER)
     private Set<Appointment> appointments;
 
 }
