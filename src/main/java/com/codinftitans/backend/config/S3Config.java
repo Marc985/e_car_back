@@ -1,4 +1,4 @@
-package com.codinftitans.backend.security;
+package com.codinftitans.backend.config;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -8,8 +8,6 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.swing.plaf.synth.Region;
 
 @Configuration
 public class S3Config {
@@ -24,7 +22,7 @@ public class S3Config {
         BasicAWSCredentials awsCreds = new BasicAWSCredentials(awsAccessKey, awsSecretKey);
         var awsS3Config = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
-                .withRegion(Regions.EU_NORTH_1) // This field if not exist throws an exception
+                .withRegion(Regions.EU_NORTH_1.EU_NORTH_1)
                 .build();
 
         return awsS3Config;
