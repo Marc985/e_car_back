@@ -28,7 +28,7 @@ public class ImageService {
             Files.createDirectories(uploadPath);
         }
         Files.copy(imageFile.getInputStream(),filePath, StandardCopyOption.REPLACE_EXISTING);
-        saveImageToDb(uniqueFileName,idProduct);
+        saveImageToDb(uniqueFileName+suffix,idProduct);
         return  uniqueFileName;
     }
     private void saveImageToDb(String name,UUID idProduct){
