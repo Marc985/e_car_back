@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AppointmentService {
@@ -26,5 +27,9 @@ public class AppointmentService {
         Appointment newApp=mapper.map(appointment,Appointment.class);
         return appointmentRepository.save(newApp);
 
+    }
+    public String updateStatus(String value, UUID id){
+        appointmentRepository.updateStatusById(value,id);
+        return "updated successfully";
     }
 }

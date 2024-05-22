@@ -10,6 +10,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 public class CarPicResponseDTO implements Serializable {
-    private  UUID id;
+    private  UUID idPic;
     private String url;
 }
