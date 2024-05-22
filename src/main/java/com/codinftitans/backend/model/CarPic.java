@@ -16,12 +16,11 @@ import java.util.UUID;
 public class CarPic implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int idPic;
+    private int id;
     private String url;
     @ManyToOne
     @JoinColumn(name = "id_car", referencedColumnName = "idCar",insertable = false,updatable = false)
     private Car car;
-
     @Column(name = "id_car")
     private UUID idCar;
 }

@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User,String> {
-    @Query(value = "select * from \"user\" where username=:username",nativeQuery = true)
-    User findByUsername(@Param("username") String username);
+    @Query(value = "select * from \"user\" where email=:email",nativeQuery = true)
+    User findByEmail(@Param("email") String email);
 }

@@ -1,7 +1,9 @@
 package com.codinftitans.backend.controller;
 
+import com.codinftitans.backend.dto.response.CarPicResponseDTO;
 import com.codinftitans.backend.model.CarPic;
 import com.codinftitans.backend.repository.CarPicRepository;
+import com.codinftitans.backend.service.CarPicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,11 +16,9 @@ import java.util.UUID;
 
 public class CarPicController {
     @Autowired
-    CarPicRepository carPicRepository;
+    CarPicService carPicService;
     @GetMapping("/pics")
-List<String> findPicsByIdCar(@RequestParam(name = "idCar") UUID idCar){
-    return carPicRepository.findPicsByIdCar(idCar).stream().map(
-            CarPic::getUrl
-    ).toList();
+List<CarPicResponseDTO> findPicsByIdCar(@RequestParam(name = "idCar") UUID idCar){
+    return carPicService.findPicByIdCar(idCar);
 }
 }

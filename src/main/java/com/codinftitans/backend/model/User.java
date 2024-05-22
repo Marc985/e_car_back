@@ -13,7 +13,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "\"user\"")
 public class User {
+
+    private String name;
     @Id
-    private String username;
+    private String email;
     private String password;
 }
