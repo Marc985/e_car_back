@@ -66,4 +66,8 @@ public class CarService {
                 car -> mapper.map(car,CarResponseDTO.class)
         ).toList();
     }
+    public  String  pinCar(boolean condition,UUID idCar){
+         carRepository.updateCarStatus(condition,idCar);
+        return  "updated successfully";
+    }
 }

@@ -38,9 +38,13 @@ public class CarController {
         return carService.pinnedCars();
     }
 
-    @PostMapping("car/new")
+    @PostMapping("/car/new")
     public CarRequestDTO newCar(@RequestBody CarRequestDTO carDTO){
         return carService.saveNewCar(carDTO);
+    }
+    @PutMapping("/car/pin/{id}")
+    public String pinCar(@PathVariable UUID id,@RequestParam("pin") boolean pin){
+        return carService.pinCar(pin,id);
     }
     @DeleteMapping("car/delete")
     public String deleteCar(@RequestParam("id") UUID carId){
