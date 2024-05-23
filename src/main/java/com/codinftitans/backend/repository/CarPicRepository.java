@@ -13,6 +13,6 @@ import java.util.UUID;
 @Repository
 public interface CarPicRepository extends JpaRepository<CarPic,Integer> {
     @Query(value = "SELECT * FROM car_pic WHERE id_car = ?", nativeQuery = true)
-   public List<CarPic> findPicsByIdCar(@Param("idCar") UUID idCar);
+    List<CarPic> findPicsByIdCar(@Param("idCar") UUID idCar);
 
 }
