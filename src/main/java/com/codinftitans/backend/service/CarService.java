@@ -1,6 +1,7 @@
 package com.codinftitans.backend.service;
 
 import com.codinftitans.backend.dto.request.CarRequestDTO;
+import com.codinftitans.backend.dto.response.BrandResponseDTO;
 import com.codinftitans.backend.dto.response.CarResponseDTO;
 import com.codinftitans.backend.model.Car;
 import com.codinftitans.backend.repository.CarPicRepository;
@@ -44,5 +45,9 @@ public class CarService {
                 ).toList();
         return products;
     }*/
+    public List<BrandResponseDTO> findALlBrand(){
 
+       return carRepository.findAllBrand().stream()
+               .map(car->mapper.map(car,BrandResponseDTO.class)).toList();
+    }
 }
