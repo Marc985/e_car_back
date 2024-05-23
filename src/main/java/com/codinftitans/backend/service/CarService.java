@@ -61,4 +61,9 @@ public class CarService {
 
                 .map(car -> mapper.map(car,CarResponseDTO.class)).toList();
     }
+    public List<CarResponseDTO> pinnedCars(){
+        return carRepository.findPinnedCars().stream().map(
+                car -> mapper.map(car,CarResponseDTO.class)
+        ).toList();
+    }
 }

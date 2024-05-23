@@ -33,6 +33,10 @@ public class CarController {
     public List<Brand> findAllBrand(){
         return carService.findALlBrand();
     }
+    @GetMapping("/cars/pinned")
+    public List<CarResponseDTO> pinnedCars(){
+        return carService.pinnedCars();
+    }
 
     @PostMapping("car/new")
     public CarRequestDTO newCar(@RequestBody CarRequestDTO carDTO){

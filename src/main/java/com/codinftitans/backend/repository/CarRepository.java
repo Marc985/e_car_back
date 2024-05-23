@@ -16,4 +16,6 @@ import java.util.UUID;
 public interface CarRepository extends JpaRepository<Car, UUID> {
     @Query(value = "select * from car where brand=:brand",nativeQuery = true)
     Page<Car> findCarsByBrand(@Param("brand") String brand, Pageable page);
+    @Query(value = "select * from car where pinned",nativeQuery = true)
+    List<Car> findPinnedCars();
 }

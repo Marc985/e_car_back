@@ -2,8 +2,10 @@ package com.codinftitans.backend.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -26,6 +28,7 @@ public class Car implements Serializable {
     private String motorType;
     private int power;
     private int placeNumber;
+    @Column(columnDefinition = "boolean default false")
     private boolean pinned;
     @OneToMany(mappedBy = "car",fetch = FetchType.EAGER)
     private Set<CarPic> pics;
