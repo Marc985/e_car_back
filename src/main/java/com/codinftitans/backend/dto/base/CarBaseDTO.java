@@ -16,5 +16,5 @@ public class CarBaseDTO {
     private String motorType;
     private int power;
     private int placeNumber;
-    private String status;
+
 }

@@ -14,5 +14,6 @@ import java.util.UUID;
 @Data
 public class CarResponseDTO extends CarBaseDTO {
     private UUID idCar;
+    private boolean pinned;
     private Set<CarPic> pics;
 }
