@@ -1,6 +1,7 @@
 package com.codinftitans.backend.controller;
 
 import com.codinftitans.backend.dto.request.CarRequestDTO;
+import com.codinftitans.backend.model.Brand;
 import com.codinftitans.backend.model.Car;
 import com.codinftitans.backend.repository.CarRepository;
 import com.codinftitans.backend.service.CarService;
@@ -22,6 +23,10 @@ public class CarController {
         return carRepository.findAll();
 
     }
+    @GetMapping("/brands")
+    public List<Brand> findAllBrand(){
+        return carService.findALlBrand();
+    }
     @PostMapping("car/new")
     public CarRequestDTO newCar(@RequestBody CarRequestDTO carDTO){
         return carService.saveNewCar(carDTO);
@@ -30,4 +35,5 @@ public class CarController {
     public String deleteCar(@RequestParam("id") UUID carId){
         return carService.deleteById(carId);
     }
+
 }

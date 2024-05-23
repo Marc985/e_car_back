@@ -1,9 +1,10 @@
 package com.codinftitans.backend.service;
 
 import com.codinftitans.backend.dto.request.CarRequestDTO;
-import com.codinftitans.backend.dto.response.BrandResponseDTO;
 import com.codinftitans.backend.dto.response.CarResponseDTO;
+import com.codinftitans.backend.model.Brand;
 import com.codinftitans.backend.model.Car;
+import com.codinftitans.backend.repository.BrandRepository;
 import com.codinftitans.backend.repository.CarPicRepository;
 import com.codinftitans.backend.repository.CarRepository;
 import org.modelmapper.ModelMapper;
@@ -17,8 +18,8 @@ import java.util.UUID;
 public class CarService {
     @Autowired
    private CarRepository carRepository;
-
-    private CarPicRepository carPicRepository;
+    @Autowired
+    private BrandRepository brandRepository;
 
     @Autowired
     private ModelMapper mapper;
@@ -45,9 +46,9 @@ public class CarService {
                 ).toList();
         return products;
     }*/
-    public List<BrandResponseDTO> findALlBrand(){
+    public List<Brand> findALlBrand(){
 
-       return carRepository.findAllBrand().stream()
-               .map(car->mapper.map(car,BrandResponseDTO.class)).toList();
+       return brandRepository.findAllBrand().stream()
+               .map(car->mapper.map(car,Brand.class)).toList();
     }
 }
