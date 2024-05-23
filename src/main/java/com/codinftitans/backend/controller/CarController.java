@@ -26,8 +26,8 @@ public class CarController {
 
     }
     @GetMapping("/cars/{brand}")
-    public List<CarResponseDTO> findCarsByBrand(@PathVariable String brand,@RequestParam int pageNumber,@RequestParam int limit){
-        return carService.findCarsByBrand(brand,pageNumber,limit);
+    public List<CarResponseDTO> findCarsByBrand(@PathVariable String brand,@RequestParam int pageNumber){
+        return carService.findCarsByBrand(brand,pageNumber);
     }
     @GetMapping("/brands")
     public List<Brand> findAllBrand(){

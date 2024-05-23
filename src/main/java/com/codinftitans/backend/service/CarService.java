@@ -54,8 +54,9 @@ public class CarService {
        return brandRepository.findAllBrand().stream()
                .map(car->mapper.map(car,Brand.class)).toList();
     }
-    public List<CarResponseDTO> findCarsByBrand(String brand,int pageNumber,int limit){
-        Pageable pageable= PageRequest.of(pageNumber,limit);
+    public List<CarResponseDTO> findCarsByBrand(String brand,int pageNumber){
+        Pageable pageable= PageRequest.of(pageNumber,6);
+
         return carRepository.findCarsByBrand(brand,pageable)
 
                 .map(car -> mapper.map(car,CarResponseDTO.class)).toList();
