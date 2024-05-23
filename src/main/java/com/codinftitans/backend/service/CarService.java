@@ -9,6 +9,9 @@ import com.codinftitans.backend.repository.CarPicRepository;
 import com.codinftitans.backend.repository.CarRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,5 +53,11 @@ public class CarService {
 
        return brandRepository.findAllBrand().stream()
                .map(car->mapper.map(car,Brand.class)).toList();
+    }
+    public List<CarResponseDTO> findCarsByBrand(String brand,int pageNumber,int limit){
+        Pageable pageable= PageRequest.of(pageNumber,limit);
+        return carRepository.findCarsByBrand(brand,pageable)
+
+                .map(car -> mapper.map(car,CarResponseDTO.class)).toList();
     }
 }

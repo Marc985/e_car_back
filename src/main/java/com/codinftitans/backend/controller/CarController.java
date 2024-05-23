@@ -1,11 +1,13 @@
 package com.codinftitans.backend.controller;
 
 import com.codinftitans.backend.dto.request.CarRequestDTO;
+import com.codinftitans.backend.dto.response.CarResponseDTO;
 import com.codinftitans.backend.model.Brand;
 import com.codinftitans.backend.model.Car;
 import com.codinftitans.backend.repository.CarRepository;
 import com.codinftitans.backend.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,10 +25,15 @@ public class CarController {
         return carRepository.findAll();
 
     }
+    @GetMapping("/cars/{brand}")
+    public List<CarResponseDTO> findCarsByBrand(@PathVariable String brand,@RequestParam int pageNumber,@RequestParam int limit){
+        return carService.findCarsByBrand(brand,pageNumber,limit);
+    }
     @GetMapping("/brands")
     public List<Brand> findAllBrand(){
         return carService.findALlBrand();
     }
+
     @PostMapping("car/new")
     public CarRequestDTO newCar(@RequestBody CarRequestDTO carDTO){
         return carService.saveNewCar(carDTO);
