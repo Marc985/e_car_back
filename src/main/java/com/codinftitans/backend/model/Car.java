@@ -26,7 +26,7 @@ public class Car implements Serializable {
     private String motorType;
     private int power;
     private int placeNumber;
-    private String status;
+    private boolean pinned;
     @OneToMany(mappedBy = "car",fetch = FetchType.EAGER)
     private Set<CarPic> pics;
     @OneToMany(mappedBy = "car",fetch = FetchType.EAGER)
