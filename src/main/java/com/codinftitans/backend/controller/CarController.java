@@ -30,8 +30,8 @@ public class CarController {
         return carService.findCarsByBrand(brand,pageNumber);
     }
     @GetMapping("/brands")
-    public List<Brand> findAllBrand(){
-        return carService.findALlBrand();
+    public List<Brand> findAllBrand(@RequestParam int pageNumber){
+        return carService.findALlBrand(pageNumber);
     }
     @GetMapping("/cars/pinned")
     public List<CarResponseDTO> pinnedCars(){
