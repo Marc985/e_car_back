@@ -16,7 +16,7 @@ import java.util.UUID;
 public class CarPic implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int idPic;
+    private UUID idPic;
     private String url;
     @ManyToOne
     @JoinColumn(name = "id_car", referencedColumnName = "idCar",insertable = false,updatable = false)
