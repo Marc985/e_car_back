@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class CarPic implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String url;
     @ManyToOne
