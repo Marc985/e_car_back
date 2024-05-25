@@ -65,15 +65,6 @@ public class SecurityConfig {
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
-                /*.oauth2Login(oauth2->
-                        oauth2.successHandler((request, response, authentication) ->
-                                response.sendRedirect("/info")
-                                )
-                                .userInfoEndpoint(userinfo->
-                                        userinfo.userService(new DefaultOAuth2UserService())
-                                        )
-                        )*/
-
                 .build();
     }
 
@@ -97,8 +88,8 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:8080","https://codinftitans-backend-vmod4mzmzq-uc.a.run.app","http://localhost:5173","http://localhost:5174","https://codinftitans-vmod4mzmzq-uc.a.run.app"));
-        configuration.setAllowedMethods(List.of("GET","POST"));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:5173"));
+        configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
         configuration.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**",configuration);
