@@ -2,6 +2,7 @@ package com.codinftitans.backend.controller;
 
 import com.codinftitans.backend.dto.request.CarRequestDTO;
 import com.codinftitans.backend.dto.response.CarResponseDTO;
+import com.codinftitans.backend.dto.response.CarWithPicDTO;
 import com.codinftitans.backend.model.Brand;
 import com.codinftitans.backend.model.Car;
 import com.codinftitans.backend.repository.CarRepository;
@@ -25,9 +26,13 @@ public class CarController {
         return carRepository.findAll();
 
     }
-    @GetMapping("/cars/{brand}")
+   /* @GetMapping("/cars/{brand}")
     public List<CarResponseDTO> findCarsByBrand(@PathVariable String brand,@RequestParam int pageNumber){
         return carService.findCarsByBrand(brand,pageNumber);
+    }*/
+    @GetMapping("cars/{brand}")
+    public List<CarWithPicDTO> findCarsByBrand(@PathVariable String brand,@RequestParam int pageNumber){
+        return carService.findNonDetailedCars(brand,pageNumber);
     }
     @GetMapping("/brands")
     public List<Brand> findAllBrand(@RequestParam int pageNumber){
