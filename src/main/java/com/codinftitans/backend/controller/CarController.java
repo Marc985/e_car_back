@@ -21,15 +21,7 @@ public class CarController {
     private CarService carService;
     @Autowired
     private CarRepository carRepository;
-    @GetMapping("/cars")
-    public List<Car> findAll(){
-        return carRepository.findAll();
 
-    }
-   /* @GetMapping("/cars/{brand}")
-    public List<CarResponseDTO> findCarsByBrand(@PathVariable String brand,@RequestParam int pageNumber){
-        return carService.findCarsByBrand(brand,pageNumber);
-    }*/
     @GetMapping("cars/{brand}")
     public List<CarWithPicDTO> findCarsByBrand(@PathVariable String brand,@RequestParam int pageNumber){
         return carService.findNonDetailedCars(brand,pageNumber);
