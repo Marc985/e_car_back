@@ -1,5 +1,6 @@
 package com.codinftitans.backend.controller;
 
+import com.codinftitans.backend.dto.response.UserResponseDTO;
 import com.codinftitans.backend.model.User;
 import com.codinftitans.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
-    @GetMapping("users")
-    public List<User> findAll(){
+    @GetMapping("/users")
+    public List<UserResponseDTO> findAll(){
        return userService.findAll();
     }
     @PostMapping("user/new")

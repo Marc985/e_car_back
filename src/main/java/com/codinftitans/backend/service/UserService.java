@@ -1,7 +1,9 @@
 package com.codinftitans.backend.service;
 
+import com.codinftitans.backend.dto.response.UserResponseDTO;
 import com.codinftitans.backend.model.User;
 import com.codinftitans.backend.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ModelMapper modelMapper;
     public String delteUser(String username){
         userRepository.deleteById(username);
         return "deleted sucessfully";
@@ -26,7 +30,9 @@ public class UserService {
         return userRepository.save(user);
 
     }
-    public List<User> findAll(){
-        return  userRepository.findAll();
+    public List<UserResponseDTO> findAll(){
+        return  userRepository.findAll().stream().map(
+                user -> modelMapper.map(user,UserResponseDTO.class)
+        ).toList();
     }
 }
