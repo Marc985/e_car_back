@@ -11,6 +11,9 @@ public class MailController {
     MailService mailService;
     @PostMapping("/mail")
     public String sendMail( @RequestBody Mail mail){
-   return   mailService.sendMessage(mail.getTo(),mail.getSubject(),mail.getText())   ;
+   return   mailService.sendMessage(mail.getFrom(),mail.getText())   ;
     }
+
+
+
 }

@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class Mail
 {
-    String to ;
-    String subject;
+    String from ;
     String text;
 }
