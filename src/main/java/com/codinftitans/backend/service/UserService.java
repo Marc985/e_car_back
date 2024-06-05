@@ -5,6 +5,9 @@ import com.codinftitans.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -22,5 +25,8 @@ public class UserService {
         user.setPassword("{noop}"+user.getPassword());
         return userRepository.save(user);
 
+    }
+    public List<User> findAll(){
+        return  userRepository.findAll();
     }
 }
