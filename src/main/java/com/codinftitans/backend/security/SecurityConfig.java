@@ -64,6 +64,7 @@ public class SecurityConfig {
                         .requestMatchers("appointment/update/").authenticated()
                         .requestMatchers("car/delete").authenticated()
                         .requestMatchers("user/new").authenticated()
+                        .requestMatchers("users").authenticated()
                         .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
