@@ -59,9 +59,6 @@ public class SecurityConfig {
                 .cors(httpSecurityCorsConfigurer -> corsConfigurationSource())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( auth -> auth
-                        .requestMatchers("/upload").authenticated()
-                        .requestMatchers("appointment/update/").authenticated()
-                        .requestMatchers("car/delete").authenticated()
                         .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
