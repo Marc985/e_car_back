@@ -31,6 +31,13 @@ public class CarService {
 
     @Autowired
     private ModelMapper mapper;
+    public List<CarWithPicDTO> findAllByPage(int pageNumber){
+        Pageable pageable=PageRequest.of(pageNumber,6);
+
+        return   carRepository.findAll(pageable).stream().map(
+              car -> addPicsToCar(car)
+      ).toList();
+    }
 
     public CarRequestDTO saveNewCar(CarRequestDTO car){
 
@@ -38,9 +45,9 @@ public class CarService {
         carRepository.save(newCar);
         return  car;
     }
-    public List<CarResponseDTO> findAllCar(){
-        List<CarResponseDTO> cars=carRepository.findAll().stream()
-                .map(car -> this.mapper.map(car,CarResponseDTO.class)).toList();
+    public List<CarWithPicDTO> findAllCar(){
+        List<CarWithPicDTO> cars=carRepository.findAll().stream()
+                .map(this::addPicsToCar).toList();
         return cars;
     }
     public String deleteById(UUID idCar){
@@ -83,13 +90,17 @@ public class CarService {
         return carRepository.findCarsByBrand(brand,pageable)
 
                 .map(car ->{
-                    List<String> pics=carPicRepository.findPicsByIdCar(car.getId()).stream()
-                            .map(CarPic::getUrl).toList();
-                    CarWithPicDTO carWithPic= mapper.map(car,CarWithPicDTO.class);
-                    carWithPic.setPics(pics);
+                   CarWithPicDTO carWithPic=addPicsToCar(car);
                     return carWithPic;
 
 
                 }).toList();
+    }
+    private CarWithPicDTO addPicsToCar(Car car){
+        List<String> pics=carPicRepository.findPicsByIdCar(car.getId()).stream()
+                .map(CarPic::getUrl).toList();
+        CarWithPicDTO carWithPic= mapper.map(car,CarWithPicDTO.class);
+        carWithPic.setPics(pics);
+        return carWithPic;
     }
 }

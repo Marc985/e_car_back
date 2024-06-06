@@ -1,6 +1,5 @@
 package com.codinftitans.backend.repository;
 
-import com.codinftitans.backend.dto.response.CarResponseDTO;
 import com.codinftitans.backend.model.Car;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -16,6 +15,8 @@ import java.util.UUID;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, UUID> {
+ Page<Car> findAll(Pageable pageable);
+
     @Query(value = "select * from car where brand=:brand",nativeQuery = true)
     Page<Car> findCarsByBrand(@Param("brand") String brand, Pageable page);
     @Query(value = "select * from car where pinned",nativeQuery = true)
