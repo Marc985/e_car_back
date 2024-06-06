@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Appointment {
     @Id
             @GeneratedValue(strategy = GenerationType.UUID)
-   private UUID idAppointment;
+   private UUID id;
 
    private String name;
    private String firstName;

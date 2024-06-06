@@ -1,10 +1,13 @@
 package com.codinftitans.backend.controller;
 
+import com.amazonaws.Response;
 import com.codinftitans.backend.dto.request.AppointmentRequestDTO;
 import com.codinftitans.backend.dto.response.AppointmentResponseDTO;
 import com.codinftitans.backend.model.Appointment;
 import com.codinftitans.backend.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +20,12 @@ public class AppointmentController {
     AppointmentService appointmentService;
 
     @GetMapping("/appointments")
-    public List<AppointmentResponseDTO> findAll(){
-        return appointmentService.findAll();
+    public ResponseEntity<List<AppointmentResponseDTO>>findAll(){
+        List<AppointmentResponseDTO> appointments=appointmentService.findAll();
+        long appointCount=appointments.size();
+        HttpHeaders httpHeaders=new HttpHeaders();
+        httpHeaders.add("X-Total-Count",String.valueOf(appointCount));
+        return new ResponseEntity<>(appointments,httpHeaders, HttpStatus.OK);
     }
     @PostMapping("/appointment/new")
     public Appointment newAppointment(AppointmentRequestDTO appointment){

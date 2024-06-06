@@ -10,6 +10,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 public class AppointmentResponseDTO extends AppointmentBaseDTO {
-    private UUID idAppointment;
+    private UUID id;
 
 }

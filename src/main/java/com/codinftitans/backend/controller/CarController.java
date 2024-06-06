@@ -26,8 +26,12 @@ public class CarController {
         return carService.findCarById(id);
     }
     @GetMapping("cars")
-    public List<NonDetailedCarDTO> findAll(){
-       return carService.findAllCar();
+    public ResponseEntity<List<NonDetailedCarDTO>> findAll(){
+        List<NonDetailedCarDTO> cars=carService.findAllCar();
+        long carCount=cars.size();
+        HttpHeaders httpHeaders=new HttpHeaders();
+        httpHeaders.add("X-Total-Count",String.valueOf(carCount));
+       return new ResponseEntity<>(cars,httpHeaders,HttpStatus.OK);
     }
 
     @GetMapping("cars/page")
