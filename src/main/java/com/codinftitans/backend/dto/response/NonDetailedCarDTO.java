@@ -10,7 +10,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CarWithPicDTO {
+public class NonDetailedCarDTO {
     private UUID id;
     private String model;
     private double price;
