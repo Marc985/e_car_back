@@ -27,7 +27,7 @@ public class S3Controller {
 
     @PostMapping(path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public String uploadFile(@RequestParam("file") MultipartFile file, @RequestParam UUID idCar) throws IOException {
-        s3Service.uploadFile(idCar,file.getOriginalFilename(), file);
+        s3Service.uploadFile(idCar,file.getOriginalFilename().replace(" ",""), file);
         return "File uploaded";
     }
 
