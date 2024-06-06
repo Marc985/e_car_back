@@ -1,5 +1,6 @@
 package com.codinftitans.backend.service;
 
+import com.codinftitans.backend.dto.request.UserRequestDTO;
 import com.codinftitans.backend.dto.response.UserResponseDTO;
 import com.codinftitans.backend.model.User;
 import com.codinftitans.backend.repository.UserRepository;
@@ -24,10 +25,12 @@ public class UserService {
         return "deleted sucessfully";
     }
 
-    public User newUser(User user){
+    public User newUser(UserRequestDTO user){
         //String encodedPassword=passwordEncoder.encode(user.getPassword());
         user.setPassword("{noop}"+user.getPassword());
-        return userRepository.save(user);
+        User userToSave=modelMapper.map(user,User.class);
+
+        return userRepository.save(userToSave);
 
     }
     public List<UserResponseDTO> findAll(){

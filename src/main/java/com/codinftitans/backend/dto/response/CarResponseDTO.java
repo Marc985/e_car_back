@@ -13,6 +13,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 public class CarResponseDTO extends CarBaseDTO {
-    private UUID idCar;
+    private UUID id;
     private boolean pinned;
 }

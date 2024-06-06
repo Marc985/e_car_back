@@ -59,12 +59,9 @@ public class SecurityConfig {
                 .cors(httpSecurityCorsConfigurer -> corsConfigurationSource())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( auth -> auth
-                        .requestMatchers("/car/new").authenticated()
                         .requestMatchers("/upload").authenticated()
                         .requestMatchers("appointment/update/").authenticated()
                         .requestMatchers("car/delete").authenticated()
-                        .requestMatchers("user/new").authenticated()
-                        .requestMatchers("users").authenticated()
                         .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -95,6 +92,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:5173"));
         configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
         configuration.addAllowedHeader("*");
+        configuration.addExposedHeader("X-Total-Count");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**",configuration);
         return source;

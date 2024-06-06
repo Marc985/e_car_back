@@ -19,8 +19,7 @@ import java.util.UUID;
 public class CarController {
     @Autowired
     private CarService carService;
-    @Autowired
-    private CarRepository carRepository;
+
 
     @GetMapping("cars/{brand}")
     public List<CarWithPicDTO> findCarsByBrand(@PathVariable String brand,@RequestParam int pageNumber){

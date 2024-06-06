@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Car implements Serializable {
     @Id
             @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID idCar;
+    private UUID id;
     private String description;
     private String brand;
     private String model;
