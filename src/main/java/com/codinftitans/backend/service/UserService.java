@@ -20,8 +20,8 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     ModelMapper modelMapper;
-    public String delteUser(String username){
-        userRepository.deleteById(username);
+    public String deleteUser(UUID id){
+        userRepository.deleteById(id);
         return "deleted sucessfully";
     }
 

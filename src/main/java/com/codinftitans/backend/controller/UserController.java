@@ -11,12 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class UserController {
     @Autowired
     UserService userService;
-    @GetMapping("/users")
+    @GetMapping("/user")
     public ResponseEntity<List<UserResponseDTO> >findAll(){
         List<UserResponseDTO> users=userService.findAll();
         long count=users.size();
@@ -28,5 +29,10 @@ public class UserController {
     public User newUser(@RequestBody UserRequestDTO user){
      return    userService.newUser(user);
     }
+    @DeleteMapping("user/{id}")
+    public String deleteUser(@PathVariable UUID id){
+        return userService.deleteUser(id);
+    }
+
 
 }
