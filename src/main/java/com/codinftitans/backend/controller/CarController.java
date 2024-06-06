@@ -21,7 +21,7 @@ import java.util.UUID;
 public class CarController {
     @Autowired
     private CarService carService;
-    @GetMapping("/car{id}")
+    @GetMapping("/car/{id}")
     public Optional<CarResponseDTO> findById(@PathVariable UUID id){
         return carService.findCarById(id);
     }
