@@ -12,6 +12,6 @@ import java.util.UUID;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, UUID> {
     @Modifying
-    @Query(value = "update appointment set status=:status where id_appointment=:id",nativeQuery = true)
+    @Query(value = "update appointment set status=:status where id=:id",nativeQuery = true)
      void updateStatusById(@Param("status")String status,@Param("id") UUID id);
 }

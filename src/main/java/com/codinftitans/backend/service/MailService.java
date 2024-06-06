@@ -18,7 +18,7 @@ public class MailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("carmarket.0806@gmail.com");
         message.setTo(to);
-        message.setSubject("No-REPLY");
+        message.setSubject("APPOINTMENT");
         message.setText(text);
         emailSender.send(message);
         return "success"
