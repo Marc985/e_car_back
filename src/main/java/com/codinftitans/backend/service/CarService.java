@@ -83,7 +83,7 @@ public class CarService {
         return carRepository.findCarsByBrand(brand,pageable)
 
                 .map(car ->{
-                    List<String> pics=carPicRepository.findPicsByIdCar(car.getIdCar()).stream()
+                    List<String> pics=carPicRepository.findPicsByIdCar(car.getId()).stream()
                             .map(CarPic::getUrl).toList();
                     CarWithPicDTO carWithPic= mapper.map(car,CarWithPicDTO.class);
                     carWithPic.setPics(pics);

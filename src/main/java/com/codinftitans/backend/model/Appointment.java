@@ -26,7 +26,7 @@ public class Appointment {
    private Instant appointmentDate;
    private String Status;
     @ManyToOne
-    @JoinColumn(name = "id_car",insertable = false,updatable = false)
+    @JoinColumn(name = "id_car",insertable = false,updatable = false,referencedColumnName = "id")
    private Car car;
     @Column(name = "id_car")
     private UUID idCar;
