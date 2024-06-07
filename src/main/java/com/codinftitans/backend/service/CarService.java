@@ -49,11 +49,11 @@ public class CarService {
       ).toList();
     }
 
-    public CarRequestDTO saveNewCar(CarRequestDTO car){
+    public CarResponseDTO saveNewCar(CarRequestDTO car){
 
         Car newCar=this.mapper.map(car,Car.class);
         carRepository.save(newCar);
-        return  car;
+        return  mapper.map(newCar,CarResponseDTO.class);
     }
     public List<NonDetailedCarDTO> findAllCar(){
         List<NonDetailedCarDTO> cars=carRepository.findAll().stream()

@@ -4,6 +4,7 @@ import com.codinftitans.backend.dto.request.CarRequestDTO;
 import com.codinftitans.backend.dto.response.CarResponseDTO;
 import com.codinftitans.backend.dto.response.NonDetailedCarDTO;
 import com.codinftitans.backend.model.Brand;
+import com.codinftitans.backend.model.Car;
 import com.codinftitans.backend.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -56,7 +57,7 @@ public class CarController {
     }
 
     @PostMapping("/car/new")
-    public CarRequestDTO newCar(@RequestBody CarRequestDTO carDTO){
+    public CarResponseDTO newCar(@RequestBody CarRequestDTO carDTO){
         return carService.saveNewCar(carDTO);
     }
     @PutMapping("/car/pin/{id}")
