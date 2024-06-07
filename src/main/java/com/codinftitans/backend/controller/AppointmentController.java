@@ -32,7 +32,7 @@ public class AppointmentController {
         return appointmentService.newAppointment(appointment);
     }
     @PutMapping("/appointment/update/{id}")
-    public String updateStatus(@PathVariable UUID id,@RequestParam String status){
+    public String updateStatus(@PathVariable UUID id,@RequestBody String status){
         return appointmentService.updateStatus(status,id);
     }
 }
