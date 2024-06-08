@@ -16,5 +16,6 @@ public class NonDetailedCarDTO {
     private double price;
     private String motorType;
     private int power;
+    private String description;
     private List<String> pics;
 }
