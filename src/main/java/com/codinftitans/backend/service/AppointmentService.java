@@ -36,7 +36,7 @@ public class AppointmentService {
     public String updateStatus(String value, UUID id){
         Optional<Appointment> appointment=appointmentRepository.findById(id);
         String email=appointment.get().getEmail();
-        String textToSend="Chere "+appointment.get().getFirstName()+"\n," +
+        String textToSend="Chere "+appointment.get().getName()+"\n," +
                 "Nous avons le plaisir de vous informé que le rendez-vous avec la voiture "+
                 appointment.get().getCar().getModel()+" " +
                 "prevu pour la " +
