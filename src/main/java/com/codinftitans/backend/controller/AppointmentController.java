@@ -28,7 +28,7 @@ public class AppointmentController {
         return new ResponseEntity<>(appointments,httpHeaders, HttpStatus.OK);
     }
     @PostMapping("/appointment/new")
-    public Appointment newAppointment(AppointmentRequestDTO appointment){
+    public Appointment newAppointment(@RequestBody AppointmentRequestDTO appointment){
         return appointmentService.newAppointment(appointment);
     }
     @PutMapping("/appointment/update/{id}")
