@@ -11,7 +11,6 @@ import java.util.UUID;
 @Data
 public class AppointmentBaseDTO {
     private String name;
-    private String firstName;
     private String email;
     private String message;
     private String contact;
