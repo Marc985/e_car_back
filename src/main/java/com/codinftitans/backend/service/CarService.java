@@ -51,7 +51,7 @@ public class CarService {
     public List<NonDetailedCarDTO> filterCar(String query){
         if(query==null){
             return carRepository.findAll().stream().map(
-                    car -> mapper.map(car,NonDetailedCarDTO.class)
+                    this::addPicsToCar
             ).toList();
         }
         else{
