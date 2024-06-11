@@ -27,13 +27,14 @@ public class CarController {
         return carService.findCarById(id);
     }
     @GetMapping("cars")
-    public ResponseEntity<List<NonDetailedCarDTO>> findAll(){
-        List<NonDetailedCarDTO> cars=carService.findAllCar();
+    public ResponseEntity<List<NonDetailedCarDTO>> filter(@RequestParam (name = "query",required = false) String query){
+        List<NonDetailedCarDTO>cars= carService.filterCar(query);
         long carCount=cars.size();
         HttpHeaders httpHeaders=new HttpHeaders();
         httpHeaders.add("X-Total-Count",String.valueOf(carCount));
-       return new ResponseEntity<>(cars,httpHeaders,HttpStatus.OK);
+        return new ResponseEntity<>(cars,httpHeaders,HttpStatus.OK);
     }
+
 
     @GetMapping("cars/page")
     public ResponseEntity<List<NonDetailedCarDTO>> findcarsBypage(@RequestParam int pageNumber){
@@ -43,6 +44,7 @@ public class CarController {
         httpHeaders.add("X-Total-Count",String.valueOf(carCount));
         return new ResponseEntity<>(carService.findAllByPage(pageNumber),httpHeaders, HttpStatus.OK);
     }
+
     @GetMapping("cars/{brand}")
     public List<NonDetailedCarDTO> findCarsByBrand(@PathVariable String brand, @RequestParam int pageNumber){
         return carService.findNonDetailedCars(brand,pageNumber);

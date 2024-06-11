@@ -48,6 +48,17 @@ public class CarService {
               car -> addPicsToCar(car)
       ).toList();
     }
+    public List<NonDetailedCarDTO> filterCar(String query){
+        if(query==null){
+            return carRepository.findAll().stream().map(
+                    car -> mapper.map(car,NonDetailedCarDTO.class)
+            ).toList();
+        }
+        else{
+        return  carRepository.filterCar(query).stream().map(
+                car -> mapper.map(car,NonDetailedCarDTO.class)
+        ).toList();}
+    }
 
     public CarResponseDTO saveNewCar(CarRequestDTO car){
 
