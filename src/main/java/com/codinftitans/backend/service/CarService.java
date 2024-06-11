@@ -56,7 +56,7 @@ public class CarService {
         }
         else{
         return  carRepository.filterCar(query).stream().map(
-                car -> mapper.map(car,NonDetailedCarDTO.class)
+                this::addPicsToCar
         ).toList();}
     }
 
