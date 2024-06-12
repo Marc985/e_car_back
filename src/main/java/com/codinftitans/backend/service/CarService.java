@@ -82,10 +82,9 @@ public class CarService {
                 ).toList();
         return products;
     }*/
-    public List<Brand> findALlBrand(int pageNumber){
-        Pageable pageable=PageRequest.of(pageNumber,6);
+    public List<Brand> findALlBrand(){
 
-       return brandRepository.findAllBrand(pageable).stream()
+       return brandRepository.findAllBrand().stream()
                .map(car->mapper.map(car,Brand.class)).toList();
     }
     public List<CarResponseDTO> findCarsByBrand(String brand,int pageNumber){

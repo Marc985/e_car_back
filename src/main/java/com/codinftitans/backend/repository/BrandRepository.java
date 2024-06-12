@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface BrandRepository extends JpaRepository<Brand, String>{
     @Query(value = "select distinct brand as name from car",nativeQuery = true)
-   public List<Brand> findAllBrand(Pageable pageable);
+    List<Brand> findAllBrand();
 
 }
