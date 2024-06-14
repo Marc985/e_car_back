@@ -6,9 +6,11 @@ import com.codinftitans.backend.dto.response.NonDetailedCarDTO;
 import com.codinftitans.backend.model.Brand;
 import com.codinftitans.backend.model.Car;
 import com.codinftitans.backend.model.CarPic;
+import com.codinftitans.backend.repository.AppointmentRepository;
 import com.codinftitans.backend.repository.BrandRepository;
 import com.codinftitans.backend.repository.CarPicRepository;
 import com.codinftitans.backend.repository.CarRepository;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -27,6 +29,8 @@ public class CarService {
     private BrandRepository brandRepository;
     @Autowired
     private CarPicRepository carPicRepository;
+    @Autowired
+    private AppointmentRepository appointmentRepository;
 
     @Autowired
     private ModelMapper mapper;
@@ -71,7 +75,10 @@ public class CarService {
                 .map(this::addPicsToCar).toList();
         return cars;
     }
+    @Transactional
     public String deleteById(UUID idCar){
+        carPicRepository.deletePicByCar(idCar);
+        appointmentRepository.deleteAppointmentByCar(idCar);
         carRepository.deleteById(idCar);
         return "deleted successfullly";
     }

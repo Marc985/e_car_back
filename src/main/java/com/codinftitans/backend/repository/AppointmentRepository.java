@@ -14,5 +14,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, UUID> 
     @Modifying
     @Query(value = "update appointment set status=:status where id=:id",nativeQuery = true)
      void updateStatusById(@Param("status")String status,@Param("id") UUID id);
+    @Modifying
+    @Query(value = "delete from appointment where id_car=?",nativeQuery = true)
+    void deleteAppointmentByCar(@Param("idCar") UUID idCar);
 
 }
