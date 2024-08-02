@@ -88,7 +88,7 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:5173","https://e-car-front.vercel.app"));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:5173","https://e-car-front.vercel.app","https://e-car-gamma.vercel.app"));
         configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
         configuration.addAllowedHeader("*");
         configuration.addExposedHeader("X-Total-Count");
